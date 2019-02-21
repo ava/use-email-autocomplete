@@ -1,5 +1,5 @@
 # useEmailAutocomplete
-📬 A React hook for email autocomplete inputs
+📬 A React hook for email autocomplete inputs (⚠️ under construction, not all features implemented yet)
 
 Installation
 ------------
