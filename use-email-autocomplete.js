@@ -4,7 +4,7 @@ import { findDOMNode  } from 'react-dom'
 
 let prevEmail = ''
 let prevVal = ''
-export function useEmailAutocomplete({
+export default function useEmailAutocomplete({
   domains = ['yahoo.com', 'hotmail.com', 'gmail.com', 'me.com', 'aol.com', 'mac.com', 'live.com', 'googlemail.com', 'msn.com', 'facebook.com', 'verizon.net', 'outlook.com', 'icloud.com', 'table.co', 'fb.com'],
   htmlAttributesOnly = false,
   validation = true,
