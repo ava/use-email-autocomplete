@@ -1,0 +1,36 @@
+{
+  "name": "use-email-autocomplete",
+  "version": "0.1.0",
+  "homepage": "https://codepen.io/alex-cory/pen/daLjKj?editors=0010",
+  "main": "/use-email-autocomplete.js",
+  "description": "📭 React hook for email autocomplete inputs",
+  "author": "Alex Cory <results@alexcory.com>",
+  "keywords": [
+    "react",
+    "react-hook",
+    "useEmailAutocomplete",
+    "use-email-autocomplete",
+    "hook"
+  ],
+  "private": false,
+  "dependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-scripts": "2.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
