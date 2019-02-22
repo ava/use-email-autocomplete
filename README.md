@@ -1,5 +1,5 @@
 # useEmailAutocomplete
-📬 A React hook for email autocomplete inputs (⚠️ under construction, not all features implemented yet)
+📬 A React hook for email autocomplete inputs
 
 Installation
 ------------
@@ -10,17 +10,6 @@ yarn add react react-dom use-email-autocomplete
 
 Usage
 -----
-
-```jsx
-import useEmailAutocomplete from 'use-email-autocomplete'
-
-const App = () => {
-  const { email, Input } = useEmailAutocomplete()
-  const onSubmit = () => /* you an use `email` from above just like from `state` */
-  return <Input />
-}
-```
-or
 ```jsx
 import useEmailAutocomplete from 'use-email-autocomplete'
 
