@@ -76,30 +76,7 @@ export default function useEmailAutocomplete({
   return {
     ...htmlAttributes,
     ...state,
-    validation,
-    // Input: ValidationInput,
-    /* ({className, ...props}) => (
-      <Input
-        {...props}
-        isValid={state.isValid}
-        className={className + ' email-autocomplete-input'}
-        value={state.email}
-        onFocus={e => {
-          doValidationCheck(e)
-          props.onFocus && props.onFocus(e)
-        }}
-        onBlur={e => {
-          doValidationCheck(e)
-          props.onBlur && props.onBlur(e)
-        }}
-        onChange={e => {
-          onChange(e)
-          props.onChange && props.onChange(e)
-        }}
-        validation={validation}
-        ref={input}
-      />
-    ), */
+    Input: Input,
   }
 }
 
@@ -116,15 +93,13 @@ const outlineColors = { // source: http://bit.ly/2j2sbyx
 }
 
 const ValidationInput = styled.input`
-  ${({ validation, isValid }) => validation && css`
+  ${props => props.isValid && css`
     outline: none;
-    ${isValid && css`
-      &:focus {
-        box-shadow: 0 0 0 0.2rem ${outlineColors[isValid]};
-      }
-      border: 1px solid ${borderColors[isValid]} !important;
-      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    `}
+    &:focus {
+      box-shadow: 0 0 0 0.2rem ${outlineColors[isValid]};
+    }
+    border: 1px solid ${borderColors[isValid]} !important;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   `}
 `
 
