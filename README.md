@@ -23,6 +23,18 @@ const App = () => {
   return <input {...bind} />
 }
 ```
+or use the builtin Input (has colored validation)
+```jsx
+import useEmailAutocomplete from 'use-email-autocomplete'
+
+const App = () => {
+  const { email, Input, ...bind } = useEmailAutocomplete()
+  
+  const onSubmit = () => /* you an use `email` from above just like from `state` */
+  
+  return <Input {...bind} />
+}
+```
 
 ### Examples
 - [Codepen](https://codepen.io/alex-cory/pen/daLjKj?editors=0010)
