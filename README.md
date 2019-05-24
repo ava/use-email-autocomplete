@@ -1,6 +1,8 @@
 # Email Autocomplete Hook
 📬 A React hook for email autocomplete inputs
 
+Play with it [here](https://alex-cory.github.io/email-autocomplete-input/)!
+
 <a href="#"><img src="https://github.com/alex-cory/email-autocomplete-input/blob/master/public/email-autocomplete-input-validation.gif?raw=true" width="100%"></a>
 
 Installation
