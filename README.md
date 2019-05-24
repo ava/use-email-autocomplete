@@ -1,4 +1,7 @@
 # Email Autocomplete Hook
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/alex-cory/use-email-autocomplete.svg)](https://greenkeeper.io/)
+
 📬 A React hook for email autocomplete inputs
 
 <a href="#"><img src="https://github.com/alex-cory/email-autocomplete-input/blob/master/public/email-autocomplete-input-validation.gif?raw=true" width="100%"></a>
