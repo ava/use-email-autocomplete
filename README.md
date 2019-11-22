@@ -34,7 +34,7 @@ Options
 -----
 | Option                | Description                                                                              |
 | --------------------- | ---------------------------------------------------------------------------------------- |
-| `htmlAttributesOnly` | Only return valid html attributes to spread onto input. Default is `false`. |
+| `validation`   | If you don't want to validate, set this to false. Default is `true`    |
 | `domains` | All email domains you want to autocomplete for. Defaults to a predefined array of email domains. |
 
 ### Option Usage
