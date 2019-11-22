@@ -1,6 +1,8 @@
 # Email Autocomplete Hook
 📬 A React hook for email autocomplete inputs
 
+This should work with all other libraries including `material-ui` and others.
+
 Installation
 ------------
 
@@ -14,9 +16,7 @@ Usage
 import useEmailAutocomplete from 'use-email-autocomplete'
 
 const App = () => {
-  const { email, ...bind } = useEmailAutocomplete({
-    htmlAttributesOnly: true,
-  })
+  const { email, bind } = useEmailAutocomplete()
   
   const onSubmit = () => /* you an use `email` from above just like from `state` */
   
@@ -32,7 +32,6 @@ Options
 | Option                | Description                                                                              |
 | --------------------- | ---------------------------------------------------------------------------------------- |
 | `htmlAttributesOnly` | Only return valid html attributes to spread onto input. Default is `false`. |
-| `validation`   | If you don't want to validate, set this to false. Default is `true`    |
 | `domains` | All email domains you want to autocomplete for. Defaults to a predefined array of email domains. |
 
 ### Option Usage
@@ -45,10 +44,8 @@ const {
   onBlur,
   onFocus,
   isValid,
-  Input,
 } = usePortal({
   domains: [],
-  htmlAttributesOnly: false,
   validation: true,
 })
 ```
