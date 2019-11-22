@@ -47,6 +47,7 @@ const {
   onBlur,
   onFocus,
   isValid,
+  bind, // spread this on an `input` or component and it will do the rest
 } = useEmailAutocomplete({
   domains: [],
   validation: true,
