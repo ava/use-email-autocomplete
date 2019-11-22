@@ -28,7 +28,7 @@ const App = () => {
 ```
 
 ### Examples
-- [Codepen](https://codepen.io/alex-cory/pen/daLjKj?editors=0010)
+- Codesandbox (coming soon... codesandbox is messing up saying I have >50 sandboxes even though I don't...)
 
 Options
 -----
