@@ -13,6 +13,9 @@
     "hook"
   ],
   "private": false,
+  "dependencies": {
+    "use-ssr": "^1.0.21"
+  },
   "peerDependencies": {
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
