@@ -10,7 +10,7 @@ Installation
 ------------
 
 ```shell
-yarn add react react-dom use-email-autocomplete
+yarn add use-email-autocomplete       OR     npm i use-email-autocomplete
 ```
 
 Usage
