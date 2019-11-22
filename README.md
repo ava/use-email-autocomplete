@@ -2,6 +2,9 @@
 📬 A React hook for email autocomplete inputs
 
 This should work with all other libraries including `material-ui` and others.
+Play with it [here](https://alex-cory.github.io/email-autocomplete-input/)!
+
+<a href="#"><img src="https://github.com/alex-cory/email-autocomplete-input/blob/master/public/email-autocomplete-input-validation.gif?raw=true" width="100%"></a>
 
 Installation
 ------------
@@ -21,6 +24,18 @@ const App = () => {
   const onSubmit = () => /* you an use `email` from above just like from `state` */
   
   return <input {...bind} />
+}
+```
+or use the builtin Input (has colored validation)
+```jsx
+import useEmailAutocomplete from 'use-email-autocomplete'
+
+const App = () => {
+  const { email, Input, ...bind } = useEmailAutocomplete()
+  
+  const onSubmit = () => /* you an use `email` from above just like from `state` */
+  
+  return <Input {...bind} />
 }
 ```
 
@@ -44,7 +59,12 @@ const {
   onBlur,
   onFocus,
   isValid,
+<<<<<<< HEAD
 } = usePortal({
+=======
+  Input,
+} = useEmailAutocomplete({
+>>>>>>> d0338b04929252ce24c67cc9f7f56d2dd16c2e2b
   domains: [],
   validation: true,
 })
