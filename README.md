@@ -59,12 +59,7 @@ const {
   onBlur,
   onFocus,
   isValid,
-<<<<<<< HEAD
-} = usePortal({
-=======
-  Input,
 } = useEmailAutocomplete({
->>>>>>> d0338b04929252ce24c67cc9f7f56d2dd16c2e2b
   domains: [],
   validation: true,
 })
