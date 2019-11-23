@@ -34,7 +34,7 @@
     </a> -->
 </p>
 
-This should work with all other libraries including `material-ui` and others.
+This should work with other libraries including `material-ui`.
 Play with it [here](https://alex-cory.github.io/email-autocomplete-input/)!
 
 <a href="#"><img src="https://github.com/alex-cory/email-autocomplete-input/blob/master/public/email-autocomplete-input-validation.gif?raw=true" width="100%"></a>
@@ -60,8 +60,41 @@ const App = () => {
 }
 ```
 
+Custom Autocomplete Input
+-------------------------
+```jsx
+export const EmailInput = ({ onChange, ...props }) => {
+  const { email, onChange: handleEmailChange, bind } = useEmailAutocomplete()
+  
+  const handleChange = e => {
+    handleEmailChange(e)
+    onChange(email)
+  }
+
+  return <input {...bind} {...props} onChange={handleChange} value={email} />
+}
+```
+
+Usage with Material UI
+----------------------
+Requires `@material-ui/core: 4.0.0` and above.
+```jsx
+import { TextField } from '@material-ui/core'
+
+export const EmailInput = ({ onChange, ...props }) => {
+  const { email, onChange: handleEmailChange, bind } = useEmailAutocomplete()
+  
+  const handleChange = e => {
+    handleEmailChange(e)
+    onChange(email)
+  }
+
+  return <TextField {...bind} {...props} onChange={handleChange} value={email} />
+}
+```
+
 ### Examples
-- Codesandbox (coming soon... codesandbox is messing up saying I have >50 sandboxes even though I don't...)
+- [Codesandbox](https://codesandbox.io/s/useemailautocomplete-material-ui-j5m1x)
 
 Options
 -----
