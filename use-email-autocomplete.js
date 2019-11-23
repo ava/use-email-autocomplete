@@ -16,15 +16,18 @@ export default function useEmailAutocomplete({
   const [isValid, setIsValid] = useState(null)
 
   const findInput = useCallback(node => {
-    if (node.tagName === 'INPUT') return node
-    if (node.children && node.children.length > 0) {
-      for (const n of node.children) return findInput(n)
+    if (node && node.tagName === "INPUT") return node
+    if (node && node.children && node.children.length > 0) {
+      for (const n of node.children) {
+        const potentialInput = findInput(n)
+        if (potentialInput) return potentialInput
+      }
     }
   }, [])
 
   useEffect(() => {
     input.current = findInput(container.current)
-    if (!input.current) throw Error('There is no input in the component you\'re trying to attach useEmailAutocomplete to')
+    if (!input.current) console.error('There is no input in the component you\'re trying to attach useEmailAutocomplete to')
   }, [findInput, input])
 
   const suggest = useCallback(email => {
