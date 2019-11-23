@@ -2,7 +2,8 @@
   "name": "use-email-autocomplete",
   "version": "1.0.2",
   "homepage": "https://codepen.io/alex-cory/pen/daLjKj?editors=0010",
-  "main": "/use-email-autocomplete.js",
+  "github": "https://github.com/alex-cory/use-email-autocomplete",
+  "main": "./use-email-autocomplete.js",
   "description": "📭 React hook for email autocomplete inputs",
   "author": "Alex Cory <results@alexcory.com>",
   "keywords": [
