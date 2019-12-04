@@ -35,7 +35,7 @@ export default function useEmailAutocomplete({
   const suggest = useCallback(email => {
     const [/* emailName */, partialDomain] = email.split('@')
     if (!partialDomain || email.length <= prevVal.current.length) return ''
-    const domain = theDomains.current.find(d => d.indexOf(partialDomain) === 0) || ''
+    const domain = theDomains.find(d => d.indexOf(partialDomain) === 0) || ''
     return domain.replace(partialDomain, '')
   }, [theDomains])
 
