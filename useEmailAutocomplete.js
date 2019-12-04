@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 
+// eslint-disable-next-line
 const defaultDomains = ['yahoo.com', 'hotmail.com', 'gmail.com', 'me.com', 'aol.com', 'mac.com', 'live.com', 'googlemail.com', 'msn.com', 'facebook.com', 'verizon.net', 'outlook.com', 'icloud.com', 'table.co', 'fb.com']
 
 
@@ -7,19 +8,20 @@ export default function useEmailAutocomplete({
   domains = [],
   validation = true,
 } = {}) {
-  const theDomains = useRef([...(domains || []), ...defaultDomains])
+  const theDomains = [...(domains || []), ...defaultDomains]
   const prevEmail = useRef('')
   const prevVal = useRef('')
   const container = useRef()
   const input = useRef()
-  const [email, setEmail] = useState('')
-  const [isValid, setIsValid] = useState(null)
+  const email = useRef('')
+  const isValid = useRef(null)
+  const [, forceUpdate] = useState(false)
 
-  const findInput = useCallback(node => {
-    if (node && node.tagName === "INPUT") return node
-    if (node && node.children && node.children.length > 0) {
-      for (const n of node.children) {
-        const potentialInput = findInput(n)
+  const findInput = useCallback(element => {
+    if (element && element.tagName === 'INPUT') return element
+    if (element && element.children && element.children.length > 0) {
+      for (const child of element.children) {
+        const potentialInput = findInput(child)
         if (potentialInput) return potentialInput
       }
     }
@@ -28,10 +30,10 @@ export default function useEmailAutocomplete({
   useEffect(() => {
     input.current = findInput(container.current)
     if (!input.current) console.error('There is no input in the component you\'re trying to attach useEmailAutocomplete to')
-  }, [findInput, input])
+  }, [findInput])
 
   const suggest = useCallback(email => {
-    const [ emailName, partialDomain ] = email.split('@')  // eslint-disable-line
+    const [/* emailName */, partialDomain] = email.split('@')
     if (!partialDomain || email.length <= prevVal.current.length) return ''
     const domain = theDomains.current.find(d => d.indexOf(partialDomain) === 0) || ''
     return domain.replace(partialDomain, '')
@@ -59,12 +61,13 @@ export default function useEmailAutocomplete({
     }
     const { value } = e.target
     const suggestion = suggest(value)
-    const email = value + suggestion
-    const isValid = validate(email)
-    setEmail(email)
-    setIsValid(isValid)
+    const theEmail = value + suggestion
+    const isValidEmail = validate(theEmail)
+    email.current = theEmail
+    isValid.current = isValidEmail
+    forceUpdate(x => !x)
     if (suggestion) highlight(suggestion)
-    prevEmail.current = email
+    prevEmail.current = theEmail
     prevVal.current = value
   }, [suggest, validate])
 
@@ -77,23 +80,28 @@ export default function useEmailAutocomplete({
     }, 0)
   }
 
-  const doValidationCheck = useCallback(e => validation && setIsValid(validate(email)), [email, validate, validation])
+  const doValidationCheck = useCallback(e => {
+    if (validation) {
+      isValid.current = validate(email)
+      forceUpdate(x => !x)
+    }
+  }, [email, validate, validation])
 
   const htmlAttributes = {
-    value: email,
+    value: email.current,
     onChange,
     ref: container,
     onBlur: doValidationCheck,
     onFocus: doValidationCheck,
   }
+
   return {
-    email, // not html attribute, but need it for form submissions, etc.
-    isValid,
+    email: new Proxy({ address: email, isValid }, { get: (obj, key) => obj[key].current }),
     ...htmlAttributes,
     bind: htmlAttributes,
-    // Input: Input,
   }
 }
+
 
 // const borderColors = {
 //   yes: '#28a745',

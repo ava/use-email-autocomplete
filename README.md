@@ -1,5 +1,20 @@
-# Email Autocomplete Hook
-📬 A React hook for email autocomplete inputs
+
+<p align="center">
+    <h1 align="center">useEmailAutocomplete</h1>
+</p>
+
+<p align="center">📬 A React hook for email autocomplete inputs</p>
+
+<br/>
+<br/>
+
+
+<div align="center">
+  <pre>npm i <a href="https://www.npmjs.com/package/use-email-autocomplete">use-email-autocomplete</a></pre>
+</div>
+
+<br/>
+<br/>
 
 <p align="center">
     <a href="https://github.com/alex-cory/use-email-autocomplete/pulls">
@@ -39,22 +54,18 @@ Play with it [here](https://alex-cory.github.io/email-autocomplete-input/)!
 
 <a href="#"><img src="https://github.com/alex-cory/email-autocomplete-input/blob/master/public/email-autocomplete-input-validation.gif?raw=true" width="100%"></a>
 
-Installation
-------------
-
-```shell
-yarn add use-email-autocomplete       OR     npm i use-email-autocomplete
-```
-
 Usage
 -----
+
+⚠️ `email` cannot be destructured. It must be used like `email.address` and `email.isValid` ⚠️
+
 ```jsx
 import useEmailAutocomplete from 'use-email-autocomplete'
 
 const App = () => {
   const { email, bind } = useEmailAutocomplete()
   
-  const onSubmit = () => /* you an use `email` from above just like from `state` */
+  const onSubmit = () => /* you an use `email.address` from above just like from `state` */
   
   return <input {...bind} />
 }
@@ -62,22 +73,29 @@ const App = () => {
 
 Custom Autocomplete Input
 -------------------------
+
+⚠️ `email` cannot be destructured. It must be used like `email.address` and `email.isValid` ⚠️
+
 ```jsx
 export const EmailInput = ({ onChange, ...props }) => {
   const { email, onChange: handleEmailChange, bind } = useEmailAutocomplete()
+  const { address, isValid } = email // WRONG, DO NOT DO THIS
   
   const handleChange = e => {
     handleEmailChange(e)
-    onChange(email)
+    if (!email.isValid) conosle.log('Email is not valid') // RIGHT
+    onChange(email.address) // RIGHT
   }
 
-  return <input {...bind} {...props} onChange={handleChange} value={email} />
+  return <input {...bind} {...props} onChange={handleChange} />
 }
 ```
 
 Usage with Material UI
 ----------------------
+
 Requires `@material-ui/core: 4.0.0` and above.
+
 ```jsx
 import { TextField } from '@material-ui/core'
 
@@ -86,34 +104,41 @@ export const EmailInput = ({ onChange, ...props }) => {
   
   const handleChange = e => {
     handleEmailChange(e)
-    onChange(email)
+    onChange(email.address)
   }
 
-  return <TextField {...bind} {...props} onChange={handleChange} value={email} />
+  return <TextField {...bind} {...props} onChange={handleChange} />
 }
 ```
 
 ### Examples
+
 - [Codesandbox](https://codesandbox.io/s/useemailautocomplete-material-ui-j5m1x)
 
 Options
------
+-------
+
 | Option                | Description                                                                              |
 | --------------------- | ---------------------------------------------------------------------------------------- |
 | `validation`   | If you don't want to validate, set this to false. Default is `true`    |
 | `domains` | All email domains you want to autocomplete for. Defaults to a predefined array of email domains. |
 
 ### Option Usage
+
 ```js
+
 const {
-  email, // value with suggestion
-  value, // same as email (used for binding to input)
+  // `email` is the `value` + `auto suggestion`
+  email: { address, isValid },
+  // spread `bind` on an `input` or component and it will
+  // apply all html valid attributes
+  bind,
+  // everything within `bind` is below. `bind.value` through `bind.onFocus`
+  value,
   onChange,
   ref,
   onBlur,
   onFocus,
-  isValid,
-  bind, // spread this on an `input` or component and it will do the rest
 } = useEmailAutocomplete({
   domains: [],
   validation: true,
