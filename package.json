@@ -1,6 +1,6 @@
 {
   "name": "use-email-autocomplete",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "homepage": "https://codepen.io/alex-cory/pen/daLjKj?editors=0010",
   "github": "https://github.com/alex-cory/use-email-autocomplete",
   "main": "./useEmailAutocomplete.js",
