@@ -5,15 +5,12 @@
 
 <p align="center">📬 A React hook for email autocomplete inputs</p>
 
-<br/>
-<br/>
 
 
 <div align="center">
   <pre>npm i <a href="https://www.npmjs.com/package/use-email-autocomplete">use-email-autocomplete</a></pre>
 </div>
 
-<br/>
 <br/>
 
 <p align="center">
